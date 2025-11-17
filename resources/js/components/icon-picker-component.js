@@ -35,7 +35,9 @@ export default function iconPickerComponent({
         async init() {
             await verifyStateUsing(this.state)
                 .then(result => this.state = result)
-
+            
+            await this.loadSet()
+            
             await this.loadIcons()
 
             this.$wire.on(`custom-icon-uploaded::${key}`, (icon) => {

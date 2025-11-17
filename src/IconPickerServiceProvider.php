@@ -8,10 +8,10 @@ use Filament\Support\Assets\Asset;
 use Filament\Support\Facades\FilamentAsset;
 use Filament\Support\Facades\FilamentIcon;
 use Guava\IconPicker\Testing\TestsIconPicker;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Features\SupportTesting\Testable;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Storage;
 
 class IconPickerServiceProvider extends PackageServiceProvider
 {
@@ -81,7 +81,7 @@ class IconPickerServiceProvider extends PackageServiceProvider
     protected function getAssets(): array
     {
         return [
-            AlpineComponent::make('icon-picker-component', __DIR__ . '/../resources/dist/components/icon-picker-component.js'),
+            AlpineComponent::make('icon-picker-component', __DIR__.'/../resources/dist/components/icon-picker-component.js'),
         ];
     }
 
