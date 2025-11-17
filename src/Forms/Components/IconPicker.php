@@ -49,8 +49,7 @@ class IconPicker extends Field
                         fn (Collection $rules) => $rules->push(new VerifyIconScope($scopedTo)),
                     )
                     ->all()
-            )
-        ;
+            );
     }
 
     public function getHintActions(): array
@@ -87,6 +86,9 @@ class IconPicker extends Field
     #[Renderless]
     public function getSetJs(?string $state = null): ?string
     {
+        if ($this->sets) {
+            return $this->sets[0];
+        }
         if ($state) {
             return IconManager::getSetFromIcon($state)?->getId();
         }
