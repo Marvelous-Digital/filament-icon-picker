@@ -7,9 +7,9 @@ use Illuminate\Contracts\View\View;
 
 trait HasSearchResultsView
 {
-    protected Closure | string $searchResultsView = 'guava-icon-picker::search-results.grid';
+    protected Closure|string $searchResultsView = 'guava-icon-picker::search-results.grid';
 
-    protected Closure | array | null $searchResultsViewData = null;
+    protected Closure|array|null $searchResultsViewData = null;
 
     public function gridSearchResults(): static
     {
@@ -28,7 +28,7 @@ trait HasSearchResultsView
         ]);
     }
 
-    public function searchResultsView(Closure | string | View $view, Closure | array | null $viewData = null): static
+    public function searchResultsView(Closure|string|View $view, Closure|array|null $viewData = null): static
     {
         $this->searchResultsView = $view;
 
@@ -44,7 +44,7 @@ trait HasSearchResultsView
         return $this->evaluate($this->searchResultsView);
     }
 
-    public function searchResultsViewData(Closure | array $viewData): static
+    public function searchResultsViewData(Closure|array $viewData): static
     {
         $this->searchResultsViewData = $viewData;
 

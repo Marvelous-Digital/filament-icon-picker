@@ -8,9 +8,9 @@ use Guava\IconPicker\Icons\Icon;
 
 trait CanUploadCustomIcons
 {
-    protected Closure | bool $customIconsUploadEnabled = false;
+    protected Closure|bool $customIconsUploadEnabled = false;
 
-    public function customIconsUploadEnabled(Closure | bool $condition = true): static
+    public function customIconsUploadEnabled(Closure|bool $condition = true): static
     {
         $this->customIconsUploadEnabled = $condition;
 
@@ -25,8 +25,7 @@ trait CanUploadCustomIcons
     public function getCustomIconsUploadAction(): UploadCustomIcon
     {
         return UploadCustomIcon::make()
-            ->disabled($this->isDisabled())
-        ;
+            ->disabled($this->isDisabled());
     }
 
     public function callAfterCustomIconUploaded(): void

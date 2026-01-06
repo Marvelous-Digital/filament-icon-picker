@@ -15,11 +15,10 @@ class IconManager
     public function getSets(): Collection
     {
         return collect($this->factory->all())
-            ->map(static fn (array $configuration, string $id) => IconSet::createFromArray($configuration, $id))
-        ;
+            ->map(static fn (array $configuration, string $id) => IconSet::createFromArray($configuration, $id));
     }
 
-    public function getIcons(null | string | IconSet $set = null, ?Model $scope = null, bool $checkScope = true): Collection
+    public function getIcons(null|string|IconSet $set = null, ?Model $scope = null, bool $checkScope = true): Collection
     {
         if ($set instanceof IconSet) {
             $set = $set->getId();
@@ -31,8 +30,7 @@ class IconManager
                 fn (Collection $sets) => $sets->filter(fn (IconSet $iconSet) => $iconSet->getId() === $set)
             )
             ->map(fn (IconSet $is) => $is->getIcons($scope, $checkScope))
-            ->collapse()
-        ;
+            ->collapse();
     }
 
     public function getSetByPrefix(string $prefix): ?IconSet

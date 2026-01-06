@@ -6,9 +6,9 @@ use Closure;
 
 trait CanCloseOnSelect
 {
-    protected Closure | bool $closeOnSelect = false;
+    protected Closure|bool $closeOnSelect = false;
 
-    public function closeOnSelect(Closure | bool $condition = true): static
+    public function closeOnSelect(Closure|bool $condition = true): static
     {
         $this->closeOnSelect = $condition;
 

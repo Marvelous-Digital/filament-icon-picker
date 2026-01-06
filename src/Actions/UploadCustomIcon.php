@@ -73,8 +73,7 @@ class UploadCustomIcon extends Action
                     $component->getScopedTo()
                 ));
                 $component->callAfterCustomIconUploaded();
-            })
-        ;
+            });
     }
 
     protected function getBladeIconId(string $label, ?Model $scope): string
@@ -91,7 +90,6 @@ class UploadCustomIcon extends Action
                 },
                 fn (Stringable $string) => $string->prepend('unscoped.')
             )
-            ->prepend('_gfic_icons-')
-        ;
+            ->prepend('_gfic_icons-');
     }
 }

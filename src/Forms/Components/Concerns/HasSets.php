@@ -9,9 +9,9 @@ use Illuminate\Support\Collection;
 
 trait HasSets
 {
-    protected null | Closure | array $sets = null;
+    protected null|Closure|array $sets = null;
 
-    public function sets(Closure | array $sets): static
+    public function sets(Closure|array $sets): static
     {
         $this->sets = $sets;
 
@@ -33,7 +33,6 @@ trait HasSets
             ->when(
                 $allowedSets = $this->getSets(),
                 fn (Collection $items) => $items->filter(fn (IconSet $set) => in_array($set->getId(), $allowedSets))
-            )
-        ;
+            );
     }
 }

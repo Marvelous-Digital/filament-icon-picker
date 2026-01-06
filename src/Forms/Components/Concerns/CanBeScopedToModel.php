@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 trait CanBeScopedToModel
 {
-    protected Closure | Model | null $scopedTo = null;
+    protected Closure|Model|null $scopedTo = null;
 
-    public function scopedTo(Closure | Model | null $record): static
+    public function scopedTo(Closure|Model|null $record): static
     {
         $this->scopedTo = $record;
 

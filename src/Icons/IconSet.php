@@ -59,8 +59,7 @@ class IconSet
                     ->after($path)
                     ->trim(DIRECTORY_SEPARATOR)
                     ->beforeLast(".{$file->getExtension()}")
-                    ->replace(DIRECTORY_SEPARATOR, '.')
-                ;
+                    ->replace(DIRECTORY_SEPARATOR, '.');
 
                 $id = "$this->prefix-$name";
 
@@ -85,7 +84,7 @@ class IconSet
         return $icons;
     }
 
-    private function filesystem(?string $disk = null): \Illuminate\Contracts\Filesystem\Filesystem | Filesystem
+    private function filesystem(?string $disk = null): \Illuminate\Contracts\Filesystem\Filesystem|Filesystem
     {
         return $this->disks && $disk ? $this->disks->disk($disk) : $this->filesystem;
     }

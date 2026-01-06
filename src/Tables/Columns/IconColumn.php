@@ -14,23 +14,22 @@ use Guava\IconPicker\Icons\Facades\IconManager;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Js;
 use Illuminate\View\ComponentAttributeBag;
-
 use function Filament\Support\generate_icon_html;
 
 class IconColumn extends Column implements HasEmbeddedView
 {
     use HasColor;
 
-    protected IconSize | string | Closure | null $size = null;
+    protected IconSize|string|Closure|null $size = null;
 
-    public function size(IconSize | string | Closure | null $size): static
+    public function size(IconSize|string|Closure|null $size): static
     {
         $this->size = $size;
 
         return $this;
     }
 
-    public function getSize(mixed $state): IconSize | string | null
+    public function getSize(mixed $state): IconSize|string|null
     {
         $size = $this->evaluate($this->size, [
             'state' => $state,
@@ -51,7 +50,7 @@ class IconColumn extends Column implements HasEmbeddedView
         return $size;
     }
 
-    public function placeholder(Htmlable | string | Closure | null | BackedEnum $placeholder): static
+    public function placeholder(Htmlable|string|Closure|null|BackedEnum $placeholder): static
     {
         if ($placeholder instanceof BackedEnum) {
             $placeholder = $this->getIconPlaceholder($placeholder);
@@ -60,7 +59,7 @@ class IconColumn extends Column implements HasEmbeddedView
         return parent::placeholder($placeholder);
     }
 
-    public function getPlaceholder(): string | Htmlable | null
+    public function getPlaceholder(): string|Htmlable|null
     {
         $placeholder = parent::getPlaceholder();
 
@@ -77,8 +76,7 @@ class IconColumn extends Column implements HasEmbeddedView
             $placeholder,
             attributes: (new ComponentAttributeBag)
         )
-            ->toHtml()
-        ;
+            ->toHtml();
     }
 
     public function toEmbeddedHtml(): string
@@ -95,16 +93,14 @@ class IconColumn extends Column implements HasEmbeddedView
             ->class([
                 'fi-ta-icon',
                 'fi-inline' => $this->isInline(),
-            ])
-        ;
+            ]);
 
         $alignment = $this->getAlignment();
 
         $attributes = $attributes
             ->class([
                 ($alignment instanceof Alignment) ? "fi-align-{$alignment->value}" : (is_string($alignment) ? $alignment : ''),
-            ])
-        ;
+            ]);
 
         ob_start(); ?>
 
@@ -114,7 +110,7 @@ class IconColumn extends Column implements HasEmbeddedView
                     ->merge([
                         'x-tooltip' => filled($tooltip = $this->getTooltip($state))
                             ? '{
-                                content: ' . Js::from($tooltip) . ',
+                                content: '.Js::from($tooltip).',
                                 theme: $store.theme,
                             }'
                             : null,

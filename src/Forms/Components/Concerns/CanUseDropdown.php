@@ -6,9 +6,9 @@ use Closure;
 
 trait CanUseDropdown
 {
-    protected Closure | bool $dropdown = true;
+    protected Closure|bool $dropdown = true;
 
-    public function dropdown(Closure | bool $condition = true): static
+    public function dropdown(Closure|bool $condition = true): static
     {
         $this->dropdown = $condition;
 
